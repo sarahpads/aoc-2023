@@ -10,7 +10,7 @@ struct Game {
 }
 
 fn main() {
-    let test: u32 = read_to_string("../input.txt")
+    let answer: u32 = read_to_string("../input.txt")
         .unwrap()
         .lines()
         .map(format_game)
@@ -18,7 +18,7 @@ fn main() {
         .map(|game| game.green * game.red * game.blue)
         .sum();
 
-    println!("{}", test);
+    println!("{}", answer);
 }
 
 fn filter_game(game: &Game) -> bool {
