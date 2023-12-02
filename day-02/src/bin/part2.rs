@@ -1,3 +1,4 @@
+
 use std::fs::read_to_string;
 use std::cmp::max;
 
@@ -14,27 +15,22 @@ fn main() {
         .lines()
         .map(format_game)
         .filter(filter_game)
-        .map(|game| game.id)
+        .map(|game| game.green * game.red * game.blue)
         .sum();
 
     println!("{}", test);
 }
 
-
 fn filter_game(game: &Game) -> bool {
-    let red_count = 12;
-    let green_count = 13;
-    let blue_count = 14;
-    println!("Game {id} red: {red} green: {green} blue: {blue}",
+    println!("Game {id} red: {red} green: {green} blue: {blue} power: {power}",
         id = game.id,
         green = game.green,
         red = game.red,
-        blue = game.blue
+        blue = game.blue,
+        power = game.green * game.red * game.blue
     );
 
-    return game.blue <= blue_count
-        && game.red <= red_count
-        && game.green <= green_count;
+    return true;
 }
 
 fn format_game(line: &str) -> Game {
